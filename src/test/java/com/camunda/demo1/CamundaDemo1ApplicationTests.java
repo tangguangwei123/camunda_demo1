@@ -166,6 +166,30 @@ class CamundaDemo1ApplicationTests {
              System.out.print("\n");
 
          }
+    }
 
+    /**
+     * 删除用户
+     */
+    @Test
+    public void delUser(){
+        IdentityService identityService = processEngine.getIdentityService();
+
+        identityService.deleteUser("1633684145198");
+    }
+
+    /**
+     * 获取组下用户
+     */
+    @Test
+    public void getUsersFromTenant(){
+        IdentityService identityService = processEngine.getIdentityService();
+
+        List<User> userList = identityService.createUserQuery().memberOfGroup("camunda-admin").listPage(0, 10);
+
+        for (int i = 0; i< userList.size(); i++){
+            System.out.print("user:"+userList.get(i).getId());
+            System.out.print("\n");
+        }
     }
 }
