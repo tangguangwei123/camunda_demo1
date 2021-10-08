@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.camunda.demo1.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.camunda.demo1.entity.User">
+    <id column="ID_" jdbcType="VARCHAR" property="id" />
+    <result column="REV_" jdbcType="INTEGER" property="rev" />
+    <result column="FIRST_" jdbcType="VARCHAR" property="first" />
+    <result column="LAST_" jdbcType="VARCHAR" property="last" />
+    <result column="EMAIL_" jdbcType="VARCHAR" property="email" />
+    <result column="PWD_" jdbcType="VARCHAR" property="pwd" />
+    <result column="SALT_" jdbcType="VARCHAR" property="salt" />
+    <result column="LOCK_EXP_TIME_" jdbcType="TIMESTAMP" property="lockExpTime" />
+    <result column="ATTEMPTS_" jdbcType="INTEGER" property="attempts" />
+    <result column="PICTURE_ID_" jdbcType="VARCHAR" property="pictureId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from act_id_user
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.camunda.demo1.entity.User">
+    insert into act_id_user (ID_, REV_, FIRST_, 
+      LAST_, EMAIL_, PWD_, SALT_, 
+      LOCK_EXP_TIME_, ATTEMPTS_, PICTURE_ID_
+      )
+    values (#{id,jdbcType=VARCHAR}, #{rev,jdbcType=INTEGER}, #{first,jdbcType=VARCHAR}, 
+      #{last,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, 
+      #{lockExpTime,jdbcType=TIMESTAMP}, #{attempts,jdbcType=INTEGER}, #{pictureId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.camunda.demo1.entity.User">
+    update act_id_user
+    set REV_ = #{rev,jdbcType=INTEGER},
+      FIRST_ = #{first,jdbcType=VARCHAR},
+      LAST_ = #{last,jdbcType=VARCHAR},
+      EMAIL_ = #{email,jdbcType=VARCHAR},
+      PWD_ = #{pwd,jdbcType=VARCHAR},
+      SALT_ = #{salt,jdbcType=VARCHAR},
+      LOCK_EXP_TIME_ = #{lockExpTime,jdbcType=TIMESTAMP},
+      ATTEMPTS_ = #{attempts,jdbcType=INTEGER},
+      PICTURE_ID_ = #{pictureId,jdbcType=VARCHAR}
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select ID_, REV_, FIRST_, LAST_, EMAIL_, PWD_, SALT_, LOCK_EXP_TIME_, ATTEMPTS_, 
+    PICTURE_ID_
+    from act_id_user
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select ID_, REV_, FIRST_, LAST_, EMAIL_, PWD_, SALT_, LOCK_EXP_TIME_, ATTEMPTS_, 
+    PICTURE_ID_
+    from act_id_user
+  </select>
+  <resultMap id="BaseResultMap" type="com.camunda.demo1.entity.User">
+    <id column="ID_" jdbcType="VARCHAR" property="id" />
+    <result column="REV_" jdbcType="INTEGER" property="rev" />
+    <result column="FIRST_" jdbcType="VARCHAR" property="first" />
+    <result column="LAST_" jdbcType="VARCHAR" property="last" />
+    <result column="EMAIL_" jdbcType="VARCHAR" property="email" />
+    <result column="PWD_" jdbcType="VARCHAR" property="pwd" />
+    <result column="SALT_" jdbcType="VARCHAR" property="salt" />
+    <result column="LOCK_EXP_TIME_" jdbcType="TIMESTAMP" property="lockExpTime" />
+    <result column="ATTEMPTS_" jdbcType="INTEGER" property="attempts" />
+    <result column="PICTURE_ID_" jdbcType="VARCHAR" property="pictureId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from act_id_user
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.camunda.demo1.entity.User">
+    insert into act_id_user (ID_, REV_, FIRST_, 
+      LAST_, EMAIL_, PWD_, SALT_, 
+      LOCK_EXP_TIME_, ATTEMPTS_, PICTURE_ID_
+      )
+    values (#{id,jdbcType=VARCHAR}, #{rev,jdbcType=INTEGER}, #{first,jdbcType=VARCHAR}, 
+      #{last,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, 
+      #{lockExpTime,jdbcType=TIMESTAMP}, #{attempts,jdbcType=INTEGER}, #{pictureId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.camunda.demo1.entity.User">
+    update act_id_user
+    set REV_ = #{rev,jdbcType=INTEGER},
+      FIRST_ = #{first,jdbcType=VARCHAR},
+      LAST_ = #{last,jdbcType=VARCHAR},
+      EMAIL_ = #{email,jdbcType=VARCHAR},
+      PWD_ = #{pwd,jdbcType=VARCHAR},
+      SALT_ = #{salt,jdbcType=VARCHAR},
+      LOCK_EXP_TIME_ = #{lockExpTime,jdbcType=TIMESTAMP},
+      ATTEMPTS_ = #{attempts,jdbcType=INTEGER},
+      PICTURE_ID_ = #{pictureId,jdbcType=VARCHAR}
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select ID_, REV_, FIRST_, LAST_, EMAIL_, PWD_, SALT_, LOCK_EXP_TIME_, ATTEMPTS_, 
+    PICTURE_ID_
+    from act_id_user
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select ID_, REV_, FIRST_, LAST_, EMAIL_, PWD_, SALT_, LOCK_EXP_TIME_, ATTEMPTS_, 
+    PICTURE_ID_
+    from act_id_user
+  </select>
+  <resultMap id="BaseResultMap" type="com.camunda.demo1.entity.User">
+    <id column="ID_" jdbcType="VARCHAR" property="id" />
+    <result column="REV_" jdbcType="INTEGER" property="rev" />
+    <result column="FIRST_" jdbcType="VARCHAR" property="first" />
+    <result column="LAST_" jdbcType="VARCHAR" property="last" />
+    <result column="EMAIL_" jdbcType="VARCHAR" property="email" />
+    <result column="PWD_" jdbcType="VARCHAR" property="pwd" />
+    <result column="SALT_" jdbcType="VARCHAR" property="salt" />
+    <result column="LOCK_EXP_TIME_" jdbcType="TIMESTAMP" property="lockExpTime" />
+    <result column="ATTEMPTS_" jdbcType="INTEGER" property="attempts" />
+    <result column="PICTURE_ID_" jdbcType="VARCHAR" property="pictureId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from act_id_user
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.camunda.demo1.entity.User">
+    insert into act_id_user (ID_, REV_, FIRST_, 
+      LAST_, EMAIL_, PWD_, SALT_, 
+      LOCK_EXP_TIME_, ATTEMPTS_, PICTURE_ID_
+      )
+    values (#{id,jdbcType=VARCHAR}, #{rev,jdbcType=INTEGER}, #{first,jdbcType=VARCHAR}, 
+      #{last,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, 
+      #{lockExpTime,jdbcType=TIMESTAMP}, #{attempts,jdbcType=INTEGER}, #{pictureId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.camunda.demo1.entity.User">
+    update act_id_user
+    set REV_ = #{rev,jdbcType=INTEGER},
+      FIRST_ = #{first,jdbcType=VARCHAR},
+      LAST_ = #{last,jdbcType=VARCHAR},
+      EMAIL_ = #{email,jdbcType=VARCHAR},
+      PWD_ = #{pwd,jdbcType=VARCHAR},
+      SALT_ = #{salt,jdbcType=VARCHAR},
+      LOCK_EXP_TIME_ = #{lockExpTime,jdbcType=TIMESTAMP},
+      ATTEMPTS_ = #{attempts,jdbcType=INTEGER},
+      PICTURE_ID_ = #{pictureId,jdbcType=VARCHAR}
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select ID_, REV_, FIRST_, LAST_, EMAIL_, PWD_, SALT_, LOCK_EXP_TIME_, ATTEMPTS_, 
+    PICTURE_ID_
+    from act_id_user
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select ID_, REV_, FIRST_, LAST_, EMAIL_, PWD_, SALT_, LOCK_EXP_TIME_, ATTEMPTS_, 
+    PICTURE_ID_
+    from act_id_user
+  </select>
+  <resultMap id="BaseResultMap" type="com.camunda.demo1.entity.User">
+    <id column="ID_" jdbcType="VARCHAR" property="id" />
+    <result column="REV_" jdbcType="INTEGER" property="rev" />
+    <result column="FIRST_" jdbcType="VARCHAR" property="first" />
+    <result column="LAST_" jdbcType="VARCHAR" property="last" />
+    <result column="EMAIL_" jdbcType="VARCHAR" property="email" />
+    <result column="PWD_" jdbcType="VARCHAR" property="pwd" />
+    <result column="SALT_" jdbcType="VARCHAR" property="salt" />
+    <result column="LOCK_EXP_TIME_" jdbcType="TIMESTAMP" property="lockExpTime" />
+    <result column="ATTEMPTS_" jdbcType="INTEGER" property="attempts" />
+    <result column="PICTURE_ID_" jdbcType="VARCHAR" property="pictureId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from act_id_user
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.camunda.demo1.entity.User">
+    insert into act_id_user (ID_, REV_, FIRST_, 
+      LAST_, EMAIL_, PWD_, SALT_, 
+      LOCK_EXP_TIME_, ATTEMPTS_, PICTURE_ID_
+      )
+    values (#{id,jdbcType=VARCHAR}, #{rev,jdbcType=INTEGER}, #{first,jdbcType=VARCHAR}, 
+      #{last,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, 
+      #{lockExpTime,jdbcType=TIMESTAMP}, #{attempts,jdbcType=INTEGER}, #{pictureId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.camunda.demo1.entity.User">
+    update act_id_user
+    set REV_ = #{rev,jdbcType=INTEGER},
+      FIRST_ = #{first,jdbcType=VARCHAR},
+      LAST_ = #{last,jdbcType=VARCHAR},
+      EMAIL_ = #{email,jdbcType=VARCHAR},
+      PWD_ = #{pwd,jdbcType=VARCHAR},
+      SALT_ = #{salt,jdbcType=VARCHAR},
+      LOCK_EXP_TIME_ = #{lockExpTime,jdbcType=TIMESTAMP},
+      ATTEMPTS_ = #{attempts,jdbcType=INTEGER},
+      PICTURE_ID_ = #{pictureId,jdbcType=VARCHAR}
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select ID_, REV_, FIRST_, LAST_, EMAIL_, PWD_, SALT_, LOCK_EXP_TIME_, ATTEMPTS_, 
+    PICTURE_ID_
+    from act_id_user
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select ID_, REV_, FIRST_, LAST_, EMAIL_, PWD_, SALT_, LOCK_EXP_TIME_, ATTEMPTS_, 
+    PICTURE_ID_
+    from act_id_user
+  </select>
+</mapper>

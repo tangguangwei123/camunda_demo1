@@ -1,0 +1,25 @@
+server:
+  port: 8080
+spring:
+ #数据源配置
+ datasource:
+    url: jdbc:mysql://localhost:3306/camundademo?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: hemo
+    password: hemo123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+camunda:
+  bpm:
+    #配置账户密码来访问Camunda自带的管理界面
+    admin-user:
+      id: admin
+      password: admin
+      first-name: admin
+    filter:
+      create: All tasks
+
