@@ -7,6 +7,7 @@ import org.camunda.bpm.engine.impl.persistence.entity.UserEntity;
 import org.camunda.bpm.engine.repository.Deployment;
 import org.camunda.bpm.engine.runtime.Execution;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
+import org.camunda.bpm.engine.runtime.ProcessInstanceQuery;
 import org.camunda.bpm.engine.task.Task;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -192,4 +193,102 @@ class CamundaDemo1ApplicationTests {
             System.out.print("\n");
         }
     }
+
+    /**
+     * 启动实例
+     */
+    @Test
+    public void startProcess(){
+        Map<String,Object> params = new HashMap<>();
+        params.put("employee","zhangsan");
+        params.put("days",2);
+        String key = "Process_07aip45";
+        ProcessInstance processInstance = runtimeService.startProcessInstanceByKey(key, params);
+        processInstance.getId();
+        System.out.println("id is : " + processInstance.getId());
+        System.out.println("getBusinessKey is : " + processInstance.getBusinessKey());
+        System.out.println("getRootProcessInstanceId is : " + processInstance.getRootProcessInstanceId());
+        System.out.println("getProcessInstanceId is : " + processInstance.getProcessInstanceId());
+    }
+
+    /**
+     * 获取任务列表
+     */
+    @Test
+    public void getTasks() {
+        List<Task> tasks = taskService.createTaskQuery().listPage(0, 5);;
+        tasks.stream().forEach(task -> {
+            System.out.println("taskId is : " + task.getId());
+            ;
+        });
+    }
+
+    /**
+     * 分配任务
+     */
+    @Test
+    public void assignTask() {
+        String taskId = "1f3a1bff-2896-11ec-a3b9-085700f2914a";
+        String assignee = "lisi";
+        taskService.setAssignee(taskId, assignee);
+    }
+
+    /**
+     * 获取任务分配人
+     */
+    @Test
+    public void getTasksByAssignee() {
+        String assignee =  "lisi";
+        List<Task> tasks = taskService.createTaskQuery().taskAssignee(assignee).listPage(0, 5);
+        tasks.stream().forEach(task -> {
+            System.out.println("assignee is: " + task.getAssignee());
+        });
+    }
+
+    /**
+     * 完成任务
+     */
+    @Test
+    public void completeTask() {
+        String taskId = "1f3a1bff-2896-11ec-a3b9-085700f2914a";
+        taskService.complete(taskId);
+        ;
+        Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
+    }
+
+    /**
+     * 删除流程
+     */
+    @Test
+    public void delProcess(){
+        String processId = "";
+        String reason = "";
+        runtimeService.deleteProcessInstance(processId, reason);
+    }
+
+    /**
+     * 挂起流程:两种方式
+     */
+    @Test
+    public void suspendProcessDef(){
+        String id = "";
+        runtimeService.suspendProcessInstanceByProcessDefinitionId(id);
+        ProcessInstanceQuery processInstanceQuery = runtimeService.createProcessInstanceQuery();
+        processInstanceQuery.processInstanceId(id);
+        runtimeService.updateProcessInstanceSuspensionState().byProcessInstanceQuery(processInstanceQuery).suspendAsync();
+    }
+    /**
+     * 激活流程: 两种激活流程定义的方法
+     */
+    @Test
+    public void activeProcessDef(){
+        String id = "";
+        //repositoryService.activateProcessDefinitionById(id);
+        repositoryService
+                .updateProcessDefinitionSuspensionState()
+                .byProcessDefinitionId(id)
+                .includeProcessInstances(true)
+                .activate();
+    }
+
 }
